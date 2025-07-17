@@ -1,0 +1,46 @@
+/* Admin Navbar Wrapper */
+.admin-navbar-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Navbar Container - only half the page width */
+.admin-navbar {
+  background-color: #e8f5e9; /* light green tint */
+  padding: 0.75rem;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 50%;
+}
+
+/* Individual Links */
+.admin-navbar a {
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+/* Hover Effect */
+.admin-navbar a:hover {
+  background-color: #c8e6c9;
+}
+
+/* Active Tab */
+.admin-navbar a.active {
+  background-color: #a5d6a7;
+}
+
+/* Admin Content Styling */
+.admin-content {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}

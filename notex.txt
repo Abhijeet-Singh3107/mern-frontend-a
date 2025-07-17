@@ -1,0 +1,1 @@
+npx create-vite@latest . --> to create project in parent folder only.
