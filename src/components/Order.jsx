@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "../components/css/Order.css";
+import "../components/CSS/Order.css";
 
 export default function Order() {
   const location = useLocation();

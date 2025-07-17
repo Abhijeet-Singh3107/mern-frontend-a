@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../App";
-import "../components/css/Header.css";
+import "../components/CSS/Header.css";
 
 export default function Header() {
   const { user } = useContext(AppContext);

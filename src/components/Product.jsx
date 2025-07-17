@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../App";
 import { useNavigate } from "react-router-dom";
-import "../components/css/Product.css";
+import "../components/CSS/Product.css";
 
 export default function Product() {
   const API_URL = import.meta.env.VITE_API_URL;
