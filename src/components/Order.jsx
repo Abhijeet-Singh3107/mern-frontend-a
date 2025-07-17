@@ -19,8 +19,8 @@ export default function Order() {
   }, [location.state]);
 
   return (
-    <div>
-      <h2>🎉 Order placed successfully!</h2>
+    <div className="order-container">
+      <h2>🎉 Order Placed Successfully!</h2>
       <p>Thank you for shopping with us.</p>
 
       {orderItems.length === 0 ? (
@@ -28,14 +28,15 @@ export default function Order() {
       ) : (
         <>
           <h3>Your Order Summary:</h3>
-          <ul>
+          <ul className="order-list">
             {orderItems.map((item) => (
               <li key={item._id}>
-                {item.productName} × {item.qty} = ₹{item.qty * item.price}
+                <span>{item.productName} × {item.qty}</span>
+                <span>₹{item.qty * item.price}</span>
               </li>
             ))}
           </ul>
-          <h4>Total Billing Amount: ₹{total}</h4>
+          <div className="order-total">Total Billing Amount: ₹{total}</div>
         </>
       )}
     </div>
