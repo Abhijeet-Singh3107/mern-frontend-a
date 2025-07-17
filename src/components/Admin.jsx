@@ -1,5 +1,5 @@
 import { Outlet, NavLink } from "react-router-dom";
-import "../components/CSS/Admin.css";
+import "../components/css/Admin.css";
 
 export default function Admin() {
   return (

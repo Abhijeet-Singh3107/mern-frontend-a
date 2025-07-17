@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import "../components/CSS/Users.css";
+import "../components/css/Users.css";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
