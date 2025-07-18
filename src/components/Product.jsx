@@ -46,7 +46,14 @@ export default function Product() {
         {products.map((product) => (
           <div key={product._id} className="product-card">
             {/* <img src={`${API_URL}/${product.imgUrl}`} alt={product.productName} /> */}
-            <img src={`/${product.imgUrl}`} alt={product.productName} />
+            <img
+              src={
+                product.imgUrl.startsWith("http")
+                  ? product.imgUrl
+                  : `/images/${product.imgUrl.replace(/^.*[\\/]/, "")}`
+              }
+              alt={product.productName}
+            />
             <h3>{product.productName}</h3>
             <p>{product.description}</p>
             <h4>₹{product.price}</h4>
