@@ -158,7 +158,9 @@ export default function Products() {
           {editId ? (
             <>
               <button onClick={handleUpdate}>Update</button>
-              <button onClick={handleCancel} className="cancel-btn">Cancel</button>
+              <button onClick={handleCancel} className="cancel-btn">
+                Cancel
+              </button>
             </>
           ) : (
             <button onClick={handleAdd}>Add</button>
@@ -193,12 +195,25 @@ export default function Products() {
                 <td>{product.description}</td>
                 <td>${product.price}</td>
                 <td>
-                  <img src={product.imgUrl} alt={product.productName} style={{ width: "60px" }} />
+                  <img
+                    src={
+                      product.imgUrl.startsWith("http")
+                        ? product.imgUrl
+                        : `/images/${product.imgUrl.replace(/^.*[\\/]/, "")}`
+                    }
+                    alt={product.productName}
+                    style={{ width: "60px" }}
+                  />
                 </td>
                 <td>
                   <div className="action-buttons">
                     <button onClick={() => handleEdit(product)}>Edit</button>
-                    <button onClick={() => handleDelete(product._id)} className="delete-btn">Delete</button>
+                    <button
+                      onClick={() => handleDelete(product._id)}
+                      className="delete-btn"
+                    >
+                      Delete
+                    </button>
                   </div>
                 </td>
               </tr>
@@ -208,9 +223,18 @@ export default function Products() {
       </div>
 
       <div className="pagination">
-        <button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
-        <span>Page {page} of {totalPages}</span>
-        <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>Next</button>
+        <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+          Previous
+        </button>
+        <span>
+          Page {page} of {totalPages}
+        </span>
+        <button
+          disabled={page === totalPages}
+          onClick={() => setPage(page + 1)}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
