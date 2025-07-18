@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <div className="header">
-      <h1>YUMYUM</h1>
+      <h1>🍔YUMYUM</h1>
       <nav className="nav-links">
         <Link to="/">Home</Link>
 
