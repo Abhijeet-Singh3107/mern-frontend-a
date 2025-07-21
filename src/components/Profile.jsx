@@ -54,7 +54,7 @@ export default function Profile() {
   const logout = () => {
     setProfile({});
     setUser({});
-    localStorage.clear(); // optional if using token storage
+    localStorage.clear();
     navigate("/login");
   };
 

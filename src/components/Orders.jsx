@@ -21,14 +21,14 @@ export default function Orders() {
         setOrders(allOrders);
 
         const total = allOrders.reduce((sum, order) => {
-          return (
-            sum +
-            order.items.reduce(
-              (orderSum, item) => orderSum + item.qty * item.price,
-              0
-            )
+          const validItems = order.items.filter(item => item.qty > 0);
+          const orderTotal = validItems.reduce(
+            (orderSum, item) => orderSum + item.qty * item.price,
+            0
           );
+          return sum + orderTotal;
         }, 0);
+
         setTotalBilling(total);
       } catch (err) {
         console.error("Error fetching orders", err);
@@ -50,10 +50,12 @@ export default function Orders() {
       ) : (
         <>
           {orders.map((order, index) => {
-            const orderTotal = order.items.reduce(
+            const validItems = order.items.filter(item => item.qty > 0);
+            const orderTotal = validItems.reduce(
               (sum, item) => sum + item.qty * item.price,
               0
             );
+
             return (
               <div key={index} className="order-card">
                 <p>
@@ -61,7 +63,7 @@ export default function Orders() {
                   {new Date(order.createdAt).toLocaleString()}
                 </p>
                 <ul>
-                  {order.items.map((item) => (
+                  {validItems.map((item) => (
                     <li key={item._id}>
                       <span>
                         {item.productName} × {item.qty}

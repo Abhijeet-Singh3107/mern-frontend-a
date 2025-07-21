@@ -64,12 +64,16 @@
   margin-top: 30px;
 }
 
-.cart-action {
-  text-align: right;
+.cart-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 
-.cart-action button {
+/* Shared cart button styling */
+.cart-button {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #4caf50;
@@ -77,8 +81,23 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.cart-action button:hover {
+.cart-button:hover {
   background-color: #388e3c;
+}
+
+.cont-shopping-button {
+  background-color: #2196f3;
+}
+
+.cont-shopping-button:hover {
+  background-color: #1976d2;
+}
+
+.empty-cart-msg {
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 20px;
 }

@@ -17,7 +17,7 @@ export default function Product() {
       const result = await axios.get(`${API_URL}/api/products/all`);
       setProducts(result.data.products);
     } catch (err) {
-      console.log(err);
+      console.error(err);
       setError("Something went wrong");
     }
   };
@@ -28,24 +28,30 @@ export default function Product() {
 
   const addToCart = (product) => {
     const found = cart.find((item) => item._id === product._id);
+
     if (!found) {
-      product.qty = 1;
-      setCart([...cart, product]);
+      const newProduct = { ...product, qty: 1 };
+      setCart([...cart, newProduct]);
+    } else {
+      const updatedCart = cart.map((item) =>
+        item._id === product._id ? { ...item, qty: item.qty + 1 } : item
+      );
+      setCart(updatedCart);
     }
 
     setClickedId(product._id);
     setTimeout(() => setClickedId(null), 200);
   };
 
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+
   return (
     <div className="product-page-container">
-      <h2>🛍️ All Products</h2>
       {error && <p className="error-message">{error}</p>}
 
       <div className="product-grid">
         {products.map((product) => (
           <div key={product._id} className="product-card">
-            {/* <img src={`${API_URL}/${product.imgUrl}`} alt={product.productName} /> */}
             <img
               src={
                 product.imgUrl.startsWith("http")
@@ -69,7 +75,7 @@ export default function Product() {
 
       <div className="cart-btn-container">
         <button onClick={() => navigate("/cart")} className="cart-btn">
-          🛒 Go to Cart ({cart.length})
+          🛒 Go to Cart ({totalQty})
         </button>
       </div>
     </div>

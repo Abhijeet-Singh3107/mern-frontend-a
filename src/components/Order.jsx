@@ -9,9 +9,11 @@ export default function Order() {
 
   useEffect(() => {
     const order = location.state?.order || [];
-    setOrderItems(order);
 
-    const totalAmount = order.reduce(
+    const filteredOrder = order.filter((item) => item.qty > 0);
+    setOrderItems(filteredOrder);
+
+    const totalAmount = filteredOrder.reduce(
       (sum, item) => sum + item.qty * item.price,
       0
     );
@@ -31,7 +33,9 @@ export default function Order() {
           <ul className="order-list">
             {orderItems.map((item) => (
               <li key={item._id}>
-                <span>{item.productName} × {item.qty}</span>
+                <span>
+                  {item.productName} × {item.qty}
+                </span>
                 <span>₹{item.qty * item.price}</span>
               </li>
             ))}

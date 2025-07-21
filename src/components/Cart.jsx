@@ -65,9 +65,13 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className="cart-qty-controls">
-                  <button onClick={() => decrement(value._id, value.qty)}>-</button>
+                  <button onClick={() => decrement(value._id, value.qty)}>
+                    -
+                  </button>
                   <span>{value.qty}</span>
-                  <button onClick={() => increment(value._id, value.qty)}>+</button>
+                  <button onClick={() => increment(value._id, value.qty)}>
+                    +
+                  </button>
                 </div>
               </div>
             )
@@ -75,13 +79,35 @@ export default function Cart() {
 
       <div className="cart-total">Total: ₹{orderValue}</div>
 
-      <div className="cart-action">
-        {user?.token ? (
-          <button onClick={handlePlaceOrder}>Place Order</button>
-        ) : (
-          <button onClick={() => navigate("/login")}>Login to Order</button>
-        )}
-      </div>
+      {cart.length === 0 || cart.every((item) => item.qty === 0) ? (
+        <div>
+          <p className="empty-cart-msg">🛒 Cart is empty</p>
+          <button
+            className="cart-button cont-shopping-button"
+            onClick={() => navigate("/")}
+          >
+            Continue Shopping...
+          </button>
+        </div>
+      ) : (
+        <div className="cart-buttons">
+          {user?.token ? (
+            <button className="cart-button" onClick={handlePlaceOrder}>
+              Place Order
+            </button>
+          ) : (
+            <button className="cart-button" onClick={() => navigate("/login")}>
+              Login to Order
+            </button>
+          )}
+          <button
+            className="cart-button cont-shopping-button"
+            onClick={() => navigate("/")}
+          >
+            Continue Shopping...
+          </button>
+        </div>
+      )}
     </div>
   );
 }

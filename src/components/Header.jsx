@@ -11,7 +11,7 @@ export default function Header() {
       <h1>🍔YUMYUM</h1>
       <nav className="nav-links">
         <Link to="/">Home</Link>
-
+        
         {user?.role === "user" && (
           <>
             <Link to="/cart">My Cart</Link>
