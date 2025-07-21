@@ -67,7 +67,7 @@ export default function AdminOrders() {
                   }
                 >
                   <option value="Pending">Pending</option>
-                  <option value="Shipped">Shipped</option>
+                  <option value="Shipped">On the Way</option>
                   <option value="Delivered">Delivered</option>
                 </select>
               </p>

@@ -48,7 +48,11 @@ export default function Product() {
   return (
     <div className="product-page-container">
       {error && <p className="error-message">{error}</p>}
-
+      <div className="cart-btn-container">
+        <button onClick={() => navigate("/cart")} className="cart-btn">
+          🛒 Go to Cart ({totalQty})
+        </button>
+      </div>
       <div className="product-grid">
         {products.map((product) => (
           <div key={product._id} className="product-card">
@@ -71,12 +75,6 @@ export default function Product() {
             </button>
           </div>
         ))}
-      </div>
-
-      <div className="cart-btn-container">
-        <button onClick={() => navigate("/cart")} className="cart-btn">
-          🛒 Go to Cart ({totalQty})
-        </button>
       </div>
     </div>
   );
